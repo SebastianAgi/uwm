@@ -232,8 +232,6 @@ def train(rank, world_size, config):
 
     # Create model
     model = instantiate(config.model).to(device)
-    print(f"feature dim: {model.obs_encoder.feat_dim()}")
-    exit()
     optimizer = torch.optim.AdamW(model.parameters(), **config.optimizer)
     scheduler = get_scheduler(optimizer=optimizer, **config.scheduler)
     scaler = torch.cuda.amp.GradScaler(enabled=config.use_amp)
@@ -309,7 +307,7 @@ def train(rank, world_size, config):
 
 
 @hydra.main(
-    version_base=None, config_path="../../configs", config_name="train_uwm.yaml"
+    version_base=None, config_path="../../configs", config_name="train_nusc.yaml"
 )
 def main(config):
     # Resolve hydra config

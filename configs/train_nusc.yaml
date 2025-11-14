@@ -1,0 +1,5 @@
+defaults:
+  - dataset: nuscenes
+  - model: nusc
+  - template_train
+  - _self_
